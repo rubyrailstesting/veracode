@@ -27,6 +27,8 @@ on:
       - dart-policy-sca
       - java-pipeline-scan
       - java-policy-scan
+      - ruby-pipeline-scan
+      - ruby-policy-scan
       - unidentified-lang-pipeline-scan
       - unidentified-lang-policy-scan
 
