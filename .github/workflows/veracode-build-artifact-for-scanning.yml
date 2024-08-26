@@ -43,7 +43,7 @@ jobs:
 
   build-plsql-package:
     if: ${{ inputs.event_name == 'plsql-pipeline-scan' || inputs.event_name == 'plsql-policy-scan'  || inputs.event_name == 'plsql-sandbox-scan'}}
-    uses: ./.github/workflows/veracode-build-plsql.yml
+    uses: ./.github/workflows/veracode-build-dart.yml
     with:
       repository: ${{ inputs.repository }}
       ref: ${{ inputs.ref }}
