@@ -22,17 +22,6 @@ jobs:
         repository: ${{ inputs.repository }}
         ref: ${{ inputs.ref }}
         token: ${{ inputs.token }}
-     
-    - name: Run YAML to Github Output Action
-      id: yaml-output
-      uses: christian-ci/action-yaml-github-output@v2
-      with:
-        file_path: /__w/veracode/veracode/veracode.yml
-        main_key: veracode_image
-        
-    - name: Print Variables
-      run: |
-        echo "Cluster Name: ${{ env.imageName }}"
 
     - name: runbuild
       uses: ./.github/workflows/veracode-default-build.yml
