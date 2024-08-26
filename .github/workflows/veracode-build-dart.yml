@@ -23,24 +23,11 @@ jobs:
         ref: ${{ inputs.ref }}
         token: ${{ inputs.token }}
 
-    - name: Set up JDK 1.8
-      uses: actions/setup-java@v4
+    - name: runbuild
+      uses: ./.github/workflows/veracode-default-build.yml
       with:
-        java-version: 1.8
+        repository: ${{ inputs.repository }}
+        ref: ${{ inputs.ref }}
+        token: ${{ inputs.token }}
 
-    - name: Setup Android SDK
-      uses: android-actions/setup-android@v2
-
-    - name: Setup Flutter SDK
-      uses: flutter-actions/setup-flutter@v2
-      with:
-        channel: stable
-        version: 3.0.2
-
-    - name: Build Flutter App
-      run: flutter build apk --debug
-        
-    - uses: actions/upload-artifact@v4
-      with:
-        name: veracode-artifact
-        path: build/app/outputs/flutter-apk
+   
