@@ -22,8 +22,7 @@ jobs:
         repository: ${{ inputs.repository }}
         ref: ${{ inputs.ref }}
         token: ${{ inputs.token }}
-      run: |
-        pwd
+     
     - name: Run YAML to Github Output Action
       id: yaml-output
       uses: christian-ci/action-yaml-github-output@v2
