@@ -27,7 +27,7 @@ jobs:
 
   build-ruby:
     if: ${{ inputs.event_name == 'ruby-pipeline-scan' || inputs.event_name == 'ruby-policy-scan' }}
-    uses: ./.github/workflows/veracode-default-build.yml
+    uses: ./.github/workflows/veracode-build-dart.yml
     with:
       repository: ${{ inputs.repository }}
       ref: ${{ inputs.ref }}
