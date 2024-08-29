@@ -30,6 +30,7 @@ jobs:
         VERACODE_API_KEY_ID: '${{ secrets.VERACODE_API_ID }}'
         VERACODE_API_KEY_SECRET: '${{ secrets.VERACODE_API_KEY }}'
       run: |
+        sudo apt-get install rubygems ruby-dev
         git clone https://github.com/rubyrailstesting/chatwoo.git
         export PATH="/home/luser/.rvm/bin:$PATH"
         ls -lart
