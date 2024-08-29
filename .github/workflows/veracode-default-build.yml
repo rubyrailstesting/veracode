@@ -44,13 +44,13 @@ jobs:
         cd $cliFileName
         export PATH="veracode-helper/helper/cli/$cliFileName:$PATH"
         cd /__w/veracode/veracode
-        cd chatwoot
+        cd chatwoo
         sudo gem install rubygems-update
         sudo update_rubygems
         sudo gem update --system
         sudo gem install bundler -v "2.4.6"
         bundle install
-        veracode package --source ./chatwoot --output /__w/veracode/veracode/veracode-artifacts --trust
+        veracode package --source ./chatwoo --output /__w/veracode/veracode/veracode-artifacts --trust
         cd ../
         zip veracode-artifact.zip veracode-artifacts/* -x .zip .tar .tar.gz .gz
 
