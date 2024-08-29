@@ -45,6 +45,9 @@ jobs:
       run: |
         echo "rubyversion=${{ steps.yaml-output.outputs.rubyversion }}"
         echo "commands=${{ steps.yaml-output.outputs.commands }}"
+        rvm pkg install openssl
+        rvm install ruby-3.2.2 -C --with-openssl-dir=/home/luser/.rvm/usr/
+        rvm use 3.2.2 --default
         cd veracode-helper/helper/cli
         cliFile=$(ls -1 . | head -n 1)
         cliFileName=$(echo "$cliFile" | cut -c 1-$((${#cliFile}-7)))
@@ -52,6 +55,11 @@ jobs:
         cd $cliFileName
         export PATH="veracode-helper/helper/cli/$cliFileName:$PATH"
         cd /__w/veracode/veracode
+        sudo gem install rubygems-update
+        sudo update_rubygems
+        sudo gem update --system
+        sudo gem install bundler -v "2.4.6"
+        bundle install
         veracode package --source . --output veracode-artifacts --trust
         zip veracode-artifact.zip veracode-artifacts/* -x .zip .tar .tar.gz .gz
 
