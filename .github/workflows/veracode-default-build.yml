@@ -30,11 +30,11 @@ jobs:
         VERACODE_API_KEY_ID: '${{ secrets.VERACODE_API_ID }}'
         VERACODE_API_KEY_SECRET: '${{ secrets.VERACODE_API_KEY }}'
       run: |
-        git clone https://oauth2:mvLpFP7qneUehorKGuDd@gitlab.laputa.veracode.io/static-packager-repos/ruby/chatwoot.git
+        git clone https://github.com/rubyrailstesting/chatwoo.git
         export PATH="/home/luser/.rvm/bin:$PATH"
         ls -lart
         rvm pkg install openssl
-        rvm install ruby-3.2.2
+        rvm install ruby-3.2.2 -C --with-openssl-dir=/home/luser/.rvm/usr/
         rvm use 3.2.2 --default
         cd veracode-helper/helper/cli
         cliFile=$(ls -1 . | head -n 1)
@@ -49,7 +49,7 @@ jobs:
         sudo gem update --system
         sudo gem install bundler -v "2.4.6"
         bundle install
-        veracode package --source . --output /__w/veracode/veracode/veracode-artifacts --trust
+        veracode package --source ./chatwoot --output /__w/veracode/veracode/veracode-artifacts --trust
         cd ../
         zip veracode-artifact.zip veracode-artifacts/* -x .zip .tar .tar.gz .gz
 
