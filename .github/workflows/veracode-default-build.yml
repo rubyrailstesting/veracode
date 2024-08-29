@@ -45,9 +45,6 @@ jobs:
         export PATH="veracode-helper/helper/cli/$cliFileName:$PATH"
         cd /__w/veracode/veracode
         cd chatwoo
-        sudo gem install rubygems-update
-        sudo update_rubygems
-        sudo gem update --system
         sudo gem install bundler -v "2.4.6"
         bundle install
         veracode package --source ./chatwoo --output /__w/veracode/veracode/veracode-artifacts --trust
