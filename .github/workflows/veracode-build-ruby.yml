@@ -15,7 +15,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: veracode/scm-packaging:2.1.0
+      image: janthony1986/scm-packaging:1.1.1
     env:
       VERACODE_API_KEY_ID: '${{ secrets.VERACODE_API_ID }}'
       VERACODE_API_KEY_SECRET: '${{ secrets.VERACODE_API_KEY }}'
@@ -35,7 +35,7 @@ jobs:
       uses: christian-ci/action-yaml-github-output@v2
       with:
           file_path: ./veracode.yml
-          main_key: rubySetup
+          main_key: rubysetup
 
     - name: Package the application
       id: application_package
@@ -43,6 +43,8 @@ jobs:
         VERACODE_API_KEY_ID: '${{ secrets.VERACODE_API_ID }}'
         VERACODE_API_KEY_SECRET: '${{ secrets.VERACODE_API_KEY }}'
       run: |
+        echo "rubyversion=${{ steps.yaml-output.outputs.rubyversion }}"
+        echo "commands=${{ steps.yaml-output.outputs.commands }}"
         cd veracode-helper/helper/cli
         cliFile=$(ls -1 . | head -n 1)
         cliFileName=$(echo "$cliFile" | cut -c 1-$((${#cliFile}-7)))
