@@ -30,6 +30,13 @@ jobs:
       with:
         path: 'veracode-helper'
 
+    - name: Run YAML to Github Output Action
+      id: yaml-output
+      uses: christian-ci/action-yaml-github-output@v2
+      with:
+          file_path: ./veracode.yml
+          main_key: rubySetup
+
     - name: Package the application
       id: application_package
       env:
