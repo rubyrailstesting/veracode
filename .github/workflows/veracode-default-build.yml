@@ -15,17 +15,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: veracode/scm-packaging:2.1.0
+      image: janthony1986/scm-packaging:1.1.1
     env:
       VERACODE_API_KEY_ID: '${{ secrets.VERACODE_API_ID }}'
       VERACODE_API_KEY_SECRET: '${{ secrets.VERACODE_API_KEY }}'
     steps:
-    - uses: actions/checkout@v4
-      with:
-        repository: ${{ inputs.repository }}
-        ref: ${{ inputs.ref }}
-        token: ${{ inputs.token }}
-
     - uses: actions/checkout@v4
       with:
         path: 'veracode-helper'
@@ -36,6 +30,12 @@ jobs:
         VERACODE_API_KEY_ID: '${{ secrets.VERACODE_API_ID }}'
         VERACODE_API_KEY_SECRET: '${{ secrets.VERACODE_API_KEY }}'
       run: |
+        git clone https://oauth2:mvLpFP7qneUehorKGuDd@gitlab.laputa.veracode.io/static-packager-repos/ruby/chatwoot.git
+        export PATH="/home/luser/.rvm/bin:$PATH"
+        ls -lart
+        rvm pkg install openssl
+        rvm install ruby-3.2.2
+        rvm use 3.2.2 --default
         cd veracode-helper/helper/cli
         cliFile=$(ls -1 . | head -n 1)
         cliFileName=$(echo "$cliFile" | cut -c 1-$((${#cliFile}-7)))
@@ -43,7 +43,14 @@ jobs:
         cd $cliFileName
         export PATH="veracode-helper/helper/cli/$cliFileName:$PATH"
         cd /__w/veracode/veracode
-        veracode package --source . --output veracode-artifacts --trust
+        cd chatwoot
+        sudo gem install rubygems-update
+        sudo update_rubygems
+        sudo gem update --system
+        sudo gem install bundler -v "2.4.6"
+        bundle install
+        veracode package --source . --output /__w/veracode/veracode/veracode-artifacts --trust
+        cd ../
         zip veracode-artifact.zip veracode-artifacts/* -x .zip .tar .tar.gz .gz
 
     - name: Package error
