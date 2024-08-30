@@ -33,7 +33,7 @@ jobs:
         git clone https://github.com/rubyrailstesting/chatwoo.git
         ls -lart
         /bin/bash -l -c "source /etc/profile.d/rvm.sh"
-        /bin/bash -l -c "rvm install ruby-3.2.2 -C --with-openssl-dir=/home/luser/.rvm/usr/"
+        /bin/bash -l -c "rvm install ruby-3.2.2 -C --with-openssl-dir=/usr/local/rvm/usr/"
         /bin/bash -l -c "source /usr/local/rvm/scripts/rvm && rvm use 3.2.2 --default"
         cd veracode-helper/helper/cli
         cliFile=$(ls -1 . | head -n 1)
