@@ -35,9 +35,7 @@ jobs:
         git clone https://github.com/rubyrailstesting/chatwoo.git
         ls -lart  
         rvm pkg install openssl
-        rvm install ruby-3.2.2 -C --with-openssl-dir=/usr/local/rvm/usr/ 
-        source /usr/local/rvm/scripts/rvm
-        rvm use 3.2.2 --default
+        rvm install ruby-3.2.2
         cd veracode-helper/helper/cli
         cliFile=$(ls -1 . | head -n 1)
         cliFileName=$(echo "$cliFile" | cut -c 1-$((${#cliFile}-7)))
@@ -46,7 +44,6 @@ jobs:
         export PATH="veracode-helper/helper/cli/$cliFileName:$PATH"
         cd /__w/veracode/veracode
         cd chatwoo
-        rvm pkg install openssl
         gem install bundler -v '2.4.6'
         bundle install
         veracode package --source ./chatwoo --output /__w/veracode/veracode/veracode-artifacts --trust
