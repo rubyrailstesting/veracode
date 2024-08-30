@@ -47,7 +47,6 @@ jobs:
         echo "gem 'veracode'" >> ./Gemfile;
         gem install bundler -v '2.4.6'
         gem install veracode
-        rvm use ruby-3.2.2@veracode
         bundle install
         veracode prepare -vD 
         /__w/veracode/veracode/veracode-helper/helper/cli/$cliFileName/veracode package --source . --output /__w/veracode/veracode/veracode-artifacts --trust --debug
