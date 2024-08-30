@@ -46,7 +46,7 @@ jobs:
         cd chatwoo
         gem install bundler -v '2.4.6'
         bundle install
-        veracode package --source ./chatwoo --output /__w/veracode/veracode/veracode-artifacts --trust
+        veracode package --source . --output /__w/veracode/veracode/veracode-artifacts --trust
         cd ../
         zip veracode-artifact.zip veracode-artifacts/* -x .zip .tar .tar.gz .gz
 
