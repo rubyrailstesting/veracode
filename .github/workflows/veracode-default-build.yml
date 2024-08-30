@@ -33,7 +33,8 @@ jobs:
       run: |
         source /usr/local/rvm/scripts/rvm
         git clone https://github.com/rubyrailstesting/chatwoo.git
-        ls -lart     
+        ls -lart  
+        rvm pkg install openssl
         rvm install ruby-3.2.2 -C --with-openssl-dir=/usr/local/rvm/usr/
         rvm use 3.2.2 --default
         cd veracode-helper/helper/cli
