@@ -42,6 +42,7 @@ jobs:
         tar -zxvf $cliFile
         cd $cliFileName
         export PATH="veracode-helper/helper/cli/$cliFileName:$PATH"
+        veracode -h
         cd /__w/veracode/veracode
         cd chatwoo
         gem install bundler -v '2.4.6'
