@@ -30,7 +30,7 @@ jobs:
         VERACODE_API_KEY_ID: '${{ secrets.VERACODE_API_ID }}'
         VERACODE_API_KEY_SECRET: '${{ secrets.VERACODE_API_KEY }}'
       run: |
-        chsh -s /bin/bas
+        chsh -s /bin/bash
         git clone https://github.com/rubyrailstesting/chatwoo.git
         ls -lart
         /bin/bash -l -c "source /etc/profile.d/rvm.sh"
