@@ -47,7 +47,6 @@ jobs:
         cd /__w/veracode/veracode
         cd chatwoo
         rvm pkg install openssl
-        rvm reinstall all --force
         gem install bundler -v '2.4.6'
         bundle install
         veracode package --source ./chatwoo --output /__w/veracode/veracode/veracode-artifacts --trust
