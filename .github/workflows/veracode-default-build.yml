@@ -30,7 +30,7 @@ jobs:
         VERACODE_API_KEY_ID: '${{ secrets.VERACODE_API_ID }}'
         VERACODE_API_KEY_SECRET: '${{ secrets.VERACODE_API_KEY }}'
       run: |
-        chsh -s /bin/bash
+        chsh -s /bin/bash -l
         git clone https://github.com/rubyrailstesting/chatwoo.git
         ls -lart     
         rvm install ruby-3.2.2 -C --with-openssl-dir=/usr/local/rvm/usr/
