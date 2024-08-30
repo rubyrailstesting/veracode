@@ -15,7 +15,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: janthony1986/scm-packaging:1.2.2
+      image: janthony1986/scm-packaging:1.2.3
     env:
       VERACODE_API_KEY_ID: '${{ secrets.VERACODE_API_ID }}'
       VERACODE_API_KEY_SECRET: '${{ secrets.VERACODE_API_KEY }}'
@@ -34,7 +34,6 @@ jobs:
         git clone https://github.com/rubyrailstesting/chatwoo.git
         export PATH="/home/luser/.rvm/bin:$PATH"
         ls -lart
-        rvm pkg install openssl
         rvm install ruby-3.2.2 -C --with-openssl-dir=/home/luser/.rvm/usr/ --force
         rvm use 3.2.2 --default
         cd veracode-helper/helper/cli
