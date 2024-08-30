@@ -47,9 +47,7 @@ jobs:
         gem install bundler -v '2.4.6'
         gem install veracode
         bundle install
-        veracode prepare -vD > /__w/veracode/veracode/cheatsheet-veracode-prepare.log
-        
-        /__w/veracode/veracode/veracode-helper/helper/cli/$cliFileName/veracode package --source . --output /__w/veracode/veracode/veracode-artifacts --trust
+        veracode prepare -vD 
         cd ../
         zip veracode-artifact.zip veracode-artifacts/* -x .zip .tar .tar.gz .gz
 
