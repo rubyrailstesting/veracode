@@ -32,9 +32,9 @@ jobs:
       run: |
         git clone https://github.com/rubyrailstesting/chatwoo.git
         ls -lart
-        source /usr/local/rvm/scripts/rvm
-        rvm install ruby-3.2.2 -C --with-openssl-dir=/home/luser/.rvm/usr/ --force
-        rvm use 3.2.2 --default
+        /bin/bash -l -c "source /usr/local/rvm/scripts/rvm"
+        /bin/bash -l -c "rvm install ruby-3.2.2 -C --with-openssl-dir=/home/luser/.rvm/usr/"
+        /bin/bash -l -c "rvm use 3.2.2 --default"
         cd veracode-helper/helper/cli
         cliFile=$(ls -1 . | head -n 1)
         cliFileName=$(echo "$cliFile" | cut -c 1-$((${#cliFile}-7)))
