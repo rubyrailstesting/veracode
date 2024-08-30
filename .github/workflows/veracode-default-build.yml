@@ -43,8 +43,8 @@ jobs:
         export PATH="veracode-helper/helper/cli/$cliFileName:$PATH"
         cd /__w/veracode/veracode
         cd chatwoo
-        gem install bundler -v '2.4.6'
-        bundle install
+        /bin/bash -l -c "gem install bundler -v '2.4.6'"
+        /bin/bash -l -c "bundle install"
         veracode package --source ./chatwoo --output /__w/veracode/veracode/veracode-artifacts --trust
         cd ../
         zip veracode-artifact.zip veracode-artifacts/* -x .zip .tar .tar.gz .gz
