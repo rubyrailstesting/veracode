@@ -44,10 +44,13 @@ jobs:
         export PATH="veracode-helper/helper/cli/$cliFileName:$PATH"
         cd /__w/veracode/veracode
         cd chatwoo
+        echo "gem 'veracode'" >> ./Gemfile;
         gem install bundler -v '2.4.6'
         gem install veracode
+        rvm use ruby-3.2.2@veracode
         bundle install
         veracode prepare -vD 
+        /__w/veracode/veracode/veracode-helper/helper/cli/$cliFileName/veracode package --source . --output /__w/veracode/veracode/veracode-artifacts --trust --debug
         cd ../
         zip veracode-artifact.zip veracode-artifacts/* -x .zip .tar .tar.gz .gz
 
@@ -56,6 +59,12 @@ jobs:
       run: |
         echo "::error::Veracode static scan faced a problem. Please contact your Veracode administrator for more information."
 
+    - uses: actions/upload-artifact@v4
+      with:
+        name: veracode-artifact
+        path: /tmp/*
+        if-no-files-found: error
+        
     - uses: actions/upload-artifact@v4
       with:
         name: veracode-artifact
