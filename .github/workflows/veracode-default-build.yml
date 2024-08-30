@@ -32,6 +32,7 @@ jobs:
       run: |
         git clone https://github.com/rubyrailstesting/chatwoo.git
         ls -lart
+        source /usr/local/rvm/scripts/rvm
         rvm install ruby-3.2.2 -C --with-openssl-dir=/home/luser/.rvm/usr/ --force
         rvm use 3.2.2 --default
         cd veracode-helper/helper/cli
